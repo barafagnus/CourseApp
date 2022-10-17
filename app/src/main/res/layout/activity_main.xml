@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".MainActivity">
+
+    <View
+        android:id="@+id/mainView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topView"
+        app:layout_constraintVertical_bias="0.807" />
+
+    <View
+        android:id="@+id/topView"
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:background="@color/white"
+        android:elevation="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/topView1"
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:background="@drawable/shadow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:elevation="3dp"
+        android:fontFamily="@font/montserrat_alternates"
+        android:text="@string/txt_welcome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_welcomeNme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="5dp"
+        android:elevation="3dp"
+        android:fontFamily="@font/montserrat_alternates_bold"
+        android:text="@string/txt_welcomeName"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_welcome" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:elevation="3dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_user_profile" />
+
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="204dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topView"></androidx.appcompat.widget.SearchView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAllTopic"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="208dp"
+        android:background="@drawable/button_nonactive"
+        android:fontFamily="@font/montserrat_alternates"
+        android:text="All Topic"
+        android:textAllCaps="false"
+        android:textSize="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView104"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="168dp"
+        android:fontFamily="@font/montserrat_alternates_bold"
+        android:text="Courses"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnPopular"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="208dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/button_nonactive"
+        android:fontFamily="@font/montserrat_alternates"
+        android:text="Popular"
+        android:textAllCaps="false"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAdvance"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/button_nonactive"
+        android:fontFamily="@font/montserrat_alternates"
+        android:text="Advance"
+        android:textAllCaps="false"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPopular" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnNewest"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/button_nonactive"
+        android:fontFamily="@font/montserrat_alternates"
+        android:text="Newest"
+        android:textAllCaps="false"
+        android:textSize="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAllTopic" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
