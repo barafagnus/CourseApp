@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+    //12313
         List<Course> courseList = new ArrayList<>();
         courseList.add(new Course(1, "java", "Java разработчик", "Создайте свое приложение", "32 Урока", "30 Мин", "#AECDFF"));
         courseList.add(new Course(2, "graphics", "Векторная графика", "Нарисуйте лучшее будущее", "32 Урока", "30 Мин", "#E38DDD"));
