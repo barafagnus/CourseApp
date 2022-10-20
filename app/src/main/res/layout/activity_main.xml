@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:elevation="3dp"
         android:fontFamily="@font/montserrat_alternates"
         android:text="@string/txt_welcome"
@@ -55,7 +55,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="5dp"
         android:elevation="3dp"
         android:fontFamily="@font/montserrat_alternates_bold"
         android:text="@string/txt_welcomeName"
@@ -65,73 +64,90 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:elevation="3dp"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
+        android:elevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_user_profile" />
 
-    <androidx.appcompat.widget.SearchView
-        android:layout_width="204dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="302dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/searchwidget_design"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topView"></androidx.appcompat.widget.SearchView>
+        app:layout_constraintTop_toBottomOf="@+id/topView" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnAllTopic"
-        android:layout_width="160dp"
-        android:layout_height="50dp"
+        android:layout_width="164dp"
+        android:layout_height="48dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/button_nonactive"
         android:fontFamily="@font/montserrat_alternates"
-        android:text="All Topic"
+        android:text="Все темы"
         android:textAllCaps="false"
         android:textSize="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView104" />
 
     <TextView
         android:id="@+id/textView104"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="168dp"
+        android:layout_marginTop="18dp"
         android:fontFamily="@font/montserrat_alternates_bold"
-        android:text="Courses"
+        android:text="Курсы"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnPopular"
-        android:layout_width="160dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="208dp"
+        android:layout_width="164dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/button_nonactive"
         android:fontFamily="@font/montserrat_alternates"
-        android:text="Popular"
+        android:text="Популярные"
         android:textAllCaps="false"
         android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView104" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnAdvance"
-        android:layout_width="160dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="28dp"
+        android:id="@+id/btnPopular2"
+        android:layout_width="52dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/button_nonactive"
         android:fontFamily="@font/montserrat_alternates"
-        android:text="Advance"
+        android:textAllCaps="false"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/topView" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAdvance"
+        android:layout_width="164dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/button_nonactive"
+        android:fontFamily="@font/montserrat_alternates"
+        android:text="Продолжить"
         android:textAllCaps="false"
         android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -139,17 +155,41 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNewest"
-        android:layout_width="160dp"
-        android:layout_height="50dp"
+        android:layout_width="164dp"
+        android:layout_height="48dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/button_nonactive"
         android:fontFamily="@font/montserrat_alternates"
-        android:text="Newest"
+        android:text="Новые"
         android:textAllCaps="false"
         android:textSize="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAllTopic" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="95dp"
+        android:layout_marginEnd="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mainView"
+        app:srcCompat="@drawable/ic_search" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/courseRecycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnNewest"
+        app:layout_constraintVertical_bias="0.053" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

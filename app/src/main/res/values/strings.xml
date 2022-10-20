@@ -2,4 +2,8 @@
     <string name="app_name">coursesapp</string>
     <string name="txt_welcome">Добро пожаловать</string>
     <string name="txt_welcomeName">в CourseApp</string>
+    <string name="txt_course_java">Java разработчик</string>
+    <string name="txt_course_java_info">Создайте свое приложение</string>
+    <string name="txt_countcourses">32 Урока</string>
+    <string name="txt_timecourses">40 Мин</string>
 </resources>
