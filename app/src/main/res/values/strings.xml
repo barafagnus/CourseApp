@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">CourseApp</string>
+    <string name="txt_welcome">Начни\nОбучение</string>
+    <string name="txt_welcomeName">Продолжим обучение или начнем что-нибудь новенькое?</string>
+    <string name="course_name">CourseName</string>
+    <string name="course_description">Course description\nCourse description11111</string>
+    <string name="course_time">1 hours 30 minutes</string>
+    <string name="player_error">Error initializing YouTube player: %s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="open_nav">Open Navigation Drawer</string>
+    <string name="close_nav">Close Navigation Drawer</string>
+</resources>
