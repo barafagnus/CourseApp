@@ -31,6 +31,7 @@ import ru.eltexstudy.courseapp.YouTubeModelApi.VideoModel;
 public class CourseInfoActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
     private static final int RECOVERY_REQUEST = 1;
     private YouTubePlayerView youTubeView;
+    private List<User> userList = HomeFragment.getUserList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,14 @@ public class CourseInfoActivity extends YouTubeBaseActivity implements YouTubePl
         courseName.setText(getIntent().getStringExtra("courseName"));
         courseTime.setText("Время обучения: " + getIntent().getStringExtra("courseTime"));
         courseFullDescription.setText(getIntent().getStringExtra("fullCourseDescription"));
+
+//        AppCompatButton addCourse = findViewById(R.id.addCourse);
+//        addCourse.setOnClickListener(v -> {
+//            User user1 = new User("Вася Пупкин");
+//            user1.addActiveCourses(courseName.getText().toString());
+//            userList.add(user1);
+//
+//        });
 
         YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_player_view);
         youTubeView.initialize(YouTubeApiConfig.YOUTUBE_API_KEY, this);

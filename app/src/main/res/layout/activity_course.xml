@@ -63,7 +63,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <WebView
+            <com.google.android.youtube.player.YouTubePlayerView
                 android:id="@+id/youtube_player_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -95,8 +95,8 @@
                         android:src="@drawable/ic_views">
                     </ImageView>
                     <TextView
+                        android:id="@+id/countViews"
                         android:layout_gravity="center"
-                        android:id="@+id/countLessons"
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
                         android:src="@drawable/ic_likes">
                     </ImageView>
                     <TextView
-                        android:id="@+id/likes"
+                        android:id="@+id/countLikes"
                         android:layout_gravity="center"
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
@@ -142,7 +142,7 @@
                 </ImageView>
                 <TextView
                     android:layout_gravity="center"
-                    android:id="@+id/countLikes"
+                    android:id="@+id/videoDuration"
                     android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -156,8 +156,8 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/courseListRecycler"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"

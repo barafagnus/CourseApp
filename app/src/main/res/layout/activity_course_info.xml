@@ -113,7 +113,7 @@
             android:layout_marginRight="12dp"
             android:layout_marginBottom="20dp"
             android:scrollbars="none"
-            app:layout_constraintBottom_toTopOf="@+id/buy_course"
+            app:layout_constraintBottom_toTopOf="@+id/addCourse"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
@@ -147,7 +147,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
-            android:id="@+id/buy_course"
+            android:id="@+id/addCourse"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="1dp"

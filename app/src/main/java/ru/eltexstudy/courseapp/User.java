@@ -1,12 +1,13 @@
 package ru.eltexstudy.courseapp;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class User {
     private int userId;
     private String name;
-    private LinkedList<String> activeCourses = new LinkedList<>();
+    private ArrayList<String> activeCourses = new ArrayList<>();
 
     public User(String name) {
         ENV.USER_ID++;
@@ -30,15 +31,24 @@ public class User {
         this.name = name;
     }
 
-    public List<String> getActiveCourses() {
+    public ArrayList<String> getActiveCourses() {
         return activeCourses;
     }
 
-    public void setActiveCourses(LinkedList<String> activeCourses) {
+    public void setActiveCourses(ArrayList<String> activeCourses) {
         this.activeCourses = activeCourses;
     }
 
     public void addActiveCourses(String course) {
         this.activeCourses.add(course);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", name='" + name + '\'' +
+                ", activeCourses=" + activeCourses +
+                '}';
     }
 }

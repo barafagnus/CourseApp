@@ -3,6 +3,8 @@ package ru.eltexstudy.courseapp.YouTubeModelApi;
 import java.util.List;
 
 public class Items {
+    private Snippet snippet;
+
     private String kind;
 
     private String etag;
@@ -23,6 +25,16 @@ public class Items {
     public void setKind (String kind)
     {
         this.kind = kind;
+    }
+
+    public Snippet getSnippet ()
+    {
+        return snippet;
+    }
+
+    public void setSnippet (Snippet snippet)
+    {
+        this.snippet = snippet;
     }
 
     public String getEtag ()
@@ -76,7 +88,8 @@ public class Items {
     @Override
     public String toString() {
         return "Items{" +
-                "kind='" + kind + '\'' +
+                "snippet=" + snippet +
+                ", kind='" + kind + '\'' +
                 ", etag='" + etag + '\'' +
                 ", id='" + id + '\'' +
                 ", contentDetails=" + contentDetails +

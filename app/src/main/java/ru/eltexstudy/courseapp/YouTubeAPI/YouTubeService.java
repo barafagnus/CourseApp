@@ -6,6 +6,6 @@ import retrofit2.http.Query;
 import ru.eltexstudy.courseapp.YouTubeModelApi.VideoModel;
 
 public interface YouTubeService {
-    @GET("videos?&part=snippet,contentDetails,statistics,status")
+    @GET("videos?&part=snippet,contentDetails,statistics,status,snippet")
     Call<VideoModel> getVideosDetails(@Query("id") String id, @Query("key") String key);
 }

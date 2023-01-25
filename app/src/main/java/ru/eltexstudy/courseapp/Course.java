@@ -1,5 +1,9 @@
 package ru.eltexstudy.courseapp;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Course {
     private int id;
     private String courseCategory;
@@ -8,8 +12,17 @@ public class Course {
     private String courseTime;
     private String courseDescription;
     private String fullCourseDescription;
+    private ArrayList<String> courseVideoId;
 
-    public Course(String courseCategory, String courseName, String courseLogo, String courseTime, String courseDescription, String fullCourseDescription) {
+
+    public Course(
+            String courseCategory,
+            String courseName,
+            String courseLogo,
+            String courseTime,
+            String courseDescription,
+            String fullCourseDescription,
+            ArrayList<String> courseVideoId) {
         ENV.ID++;
         this.id = ENV.ID;
         this.courseCategory = courseCategory;
@@ -18,11 +31,9 @@ public class Course {
         this.courseTime = courseTime;
         this.courseDescription = courseDescription;
         this.fullCourseDescription = fullCourseDescription;
+        this.courseVideoId = courseVideoId;
     }
 
-    public Course() {
-
-    }
 
     public int getId() {
         return id;
@@ -81,6 +92,12 @@ public class Course {
     public void setFullCourseDescription(String fullCourseDescription) {
         this.fullCourseDescription = fullCourseDescription;
     }
+
+    public ArrayList<String> getCourseVideoId() {
+        return courseVideoId;
+    }
+
+
 
     @Override
     public String toString() {
