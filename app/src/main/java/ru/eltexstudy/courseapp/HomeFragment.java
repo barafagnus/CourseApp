@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment implements RecyclerViewInterface{
         navList.add(new CurrentNavItem("3D графика", "#8D8D8D"));
         navList.add(new CurrentNavItem("Маркетинг", "#8D8D8D"));
         navList.add(new CurrentNavItem("Фото", "#8D8D8D"));
-        System.out.println("CONTEXT " + getContext());
+
 
         navRecycler = view.findViewById(R.id.navRecycler);
         linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -94,29 +94,26 @@ public class HomeFragment extends Fragment implements RecyclerViewInterface{
                 "Администрирование Linux, настройка web-серверов",
                 "За курсы вы научитесь создавать стабильные и безотказные инфраструктуры, займетесь настройкой сетей и мониторингом.",
                 new ArrayList<>(Arrays.asList(
-                        "YLUyVtHTGqw",
-                        "_NWqjokwZFI",
-                        "YVsB4EDFDbI",
-                        "ZICE4lDlH5I",
-                        "kc0ScJvmtd8",
-                        "heh1N3qltF8",
-                        "8KIh_eyy2Lo"))));
+                        "Z-a7MNStFQs",
+                        "wL-axMRQky8",
+                        "uEv14oIwUBs",
+                        "cgN3-Z_w2uA",
+                        "I_AB7R36q6M"))));
 
         courseData.add(new Course(
                 "IT",
-                "Нативная Web",
+                "Нативная Web разработка",
                 "programming",
                 "16 часов 30 минут",
                 "JS TypeScript ReactNative",
                 "Курс нацелен на изучение фреймворка ReactNative. Научитесь разрабатывать собственные адаптивные web-приложения.",
                 new ArrayList<>(Arrays.asList(
-                        "YLUyVtHTGqw",
-                        "_NWqjokwZFI",
-                        "YVsB4EDFDbI",
-                        "ZICE4lDlH5I",
-                        "kc0ScJvmtd8",
-                        "heh1N3qltF8",
-                        "8KIh_eyy2Lo"))));
+                        "j9nVVIq9eSQ",
+                        "YjuaFefiQe4",
+                        "2d_pn5oKrRg",
+                        "Q338MkfbBEQ",
+                        "hfSFWNzifp4",
+                        "t7rzCbRBqLU"))));
 
         courseData.add(new Course(
                 "Design",
@@ -126,25 +123,20 @@ public class HomeFragment extends Fragment implements RecyclerViewInterface{
                 "Верстка сайта на Тильда",
                 "За время курса, вы научитесь самостоятельно разрабатывать аккуратные и полезные сайты, лендинги, интернет-магазины на Тильде. После курса вы станете специалистом, который сможет решать сотни разных интересных задач для бизнеса. Квалифицированные дизайнеры на Тильде сегодня очень востребованы на фрилансе.",
                 new ArrayList<>(Arrays.asList(
-                        "YLUyVtHTGqw",
-                        "_NWqjokwZFI",
-                        "YVsB4EDFDbI",
-                        "ZICE4lDlH5I",
-                        "kc0ScJvmtd8",
-                        "heh1N3qltF8",
-                        "8KIh_eyy2Lo"))));
+                        "YOT0AqIp6VA",
+                        "DF0NqAwV0NM",
+                        "m8nm4RuBRoQ",
+                        "JHqsnWaT9Sw",
+                        "irYU2XBFQjU"))));
 
         linearLayoutManagerCourseList = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         setAdapterMainCourses(courseData);
 
-
-        User user1 = new User("Вася Пупкин");
-        user1.addActiveCourses(courseData.get(0).getCourseName());
-        user1.addActiveCourses(courseData.get(1).getCourseName());
-
-        userList.add(user1);
-
-
+        // Добавление пользователя
+        if (userList.isEmpty()) {
+            User user1 = new User("Сергей", "barafagnus@gmail.com");
+            userList.add(user1);
+        }
         return view;
     }
 
@@ -166,13 +158,11 @@ public class HomeFragment extends Fragment implements RecyclerViewInterface{
 
         prevPos.add(position);
         if (prevPos.size() == 2) {
-            System.out.println(prevPos);
             navList.set(prevPos.get(0), new CurrentNavItem(navList.get(prevPos.get(0)).getName(), "#8D8D8D"));
             navList.set(position, new CurrentNavItem(navList.get(position).getName(), "#313131"));
             prevPos.remove(0);
         }
         else {
-            System.out.println(prevPos);
             navList.set(position, new CurrentNavItem(navList.get(position).getName(), "#313131"));
         }
         setAdapterMainNavigation(navList);
@@ -184,6 +174,7 @@ public class HomeFragment extends Fragment implements RecyclerViewInterface{
         intent.putExtra("courseName", courseData.get(position).getCourseName());
         intent.putExtra("courseTime", courseData.get(position).getCourseTime());
         intent.putExtra("fullCourseDescription", courseData.get(position).getFullCourseDescription());
+        intent.putExtra("videoId", courseData.get(position).getCourseVideoId().get(position));
         startActivity(intent);
     }
 

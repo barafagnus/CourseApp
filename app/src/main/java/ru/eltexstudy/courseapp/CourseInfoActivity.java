@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -15,23 +14,16 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import java.util.ArrayList;
 import ru.eltexstudy.courseapp.YouTubeAPI.YouTubeApiConfig;
-import ru.eltexstudy.courseapp.YouTubeAPI.YouTubeService;
-import ru.eltexstudy.courseapp.YouTubeModelApi.Items;
-import ru.eltexstudy.courseapp.YouTubeModelApi.VideoModel;
 
 public class CourseInfoActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
     private static final int RECOVERY_REQUEST = 1;
     private YouTubePlayerView youTubeView;
-    private List<User> userList = HomeFragment.getUserList();
+    private ArrayList<User> userList;
+    private String videoId;
+    private YouTubePlayer youTubePlayer;
+    private String currentCourseName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,50 +38,55 @@ public class CourseInfoActivity extends YouTubeBaseActivity implements YouTubePl
         TextView countLessons = findViewById(R.id.countLessons);
         TextView courseTime = findViewById(R.id.courseTime);
         TextView courseFullDescription = findViewById(R.id.fullCourseDescription);
-
-        courseName.setText(getIntent().getStringExtra("courseName"));
+        currentCourseName = getIntent().getStringExtra("courseName");
+        courseName.setText(currentCourseName);
         courseTime.setText("Время обучения: " + getIntent().getStringExtra("courseTime"));
         courseFullDescription.setText(getIntent().getStringExtra("fullCourseDescription"));
 
-//        AppCompatButton addCourse = findViewById(R.id.addCourse);
-//        addCourse.setOnClickListener(v -> {
-//            User user1 = new User("Вася Пупкин");
-//            user1.addActiveCourses(courseName.getText().toString());
-//            userList.add(user1);
-//
-//        });
-
+        videoId = getIntent().getStringExtra("videoId");
         YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_player_view);
         youTubeView.initialize(YouTubeApiConfig.YOUTUBE_API_KEY, this);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://www.googleapis.com/youtube/v3/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        AppCompatButton addCourse = findViewById(R.id.addCourse);
+        // Обработка наличие курса у пользователя
+        userList = HomeFragment.getUserList();
+        if (userList.get(0).getActiveCourses().contains(currentCourseName)) {
+            addCourse.setVisibility(View.GONE);
+        }
 
-        YouTubeService youTubeService = retrofit.create(YouTubeService.class);
-        youTubeService.getVideosDetails("FOMWgFlmo-8", YouTubeApiConfig.YOUTUBE_API_KEY).enqueue(new Callback<VideoModel>() {
-            @Override
-            public void onResponse(Call<VideoModel> call, Response<VideoModel> response) {
-                System.out.println("DATA123 " + response.code());
-                System.out.println("DATA123 " + response);
-                //List<Items> apiData = response.body().getItems();
-                response.body().getItems().forEach(element -> {
-                    System.out.println(element.getStatistics().getLikeCount());
-                });
-            }
-
-            @Override
-            public void onFailure(Call<VideoModel> call, Throwable t) {
-                System.out.println(t.getMessage());
-            }
+        addCourse.setOnClickListener(v -> {
+            userList.get(0).addActiveCourses(courseName.getText().toString());
+            HomeFragment.setUserList(userList);
+            Toast.makeText(getApplicationContext(), "Курс успешно добавлен", Toast.LENGTH_SHORT).show();
+            this.finish();
         });
+
+//
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl("https://www.googleapis.com/youtube/v3/")
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build();
+//
+//        YouTubeService youTubeService = retrofit.create(YouTubeService.class);
+//        youTubeService.getOneVideoDetails("FOMWgFlmo-8", YouTubeApiConfig.YOUTUBE_API_KEY).enqueue(new Callback<VideoModel>() {
+//            @Override
+//            public void onResponse(Call<VideoModel> call, Response<VideoModel> response) {
+//                response.body().getItems().forEach(element -> {
+//                });
+//            }
+//
+//            @Override
+//            public void onFailure(Call<VideoModel> call, Throwable t) {
+//                System.out.println(t.getMessage());
+//            }
+//        });
     }
 
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean wasRestored) {
+        this.youTubePlayer = youTubePlayer;
         if (!wasRestored) {
-            youTubePlayer.cueVideo("MaeRXppkzdA");
+            youTubePlayer.cueVideo(videoId);
             youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
         }
     }

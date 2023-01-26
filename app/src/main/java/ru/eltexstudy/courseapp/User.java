@@ -7,12 +7,14 @@ import java.util.List;
 public class User {
     private int userId;
     private String name;
+    private String mail;
     private ArrayList<String> activeCourses = new ArrayList<>();
 
-    public User(String name) {
+    public User(String name, String mail) {
         ENV.USER_ID++;
         this.userId = ENV.USER_ID;
         this.name = name;
+        this.mail = mail;
     }
 
     public int getUserId() {
@@ -29,6 +31,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public ArrayList<String> getActiveCourses() {

@@ -21,7 +21,7 @@
             <ImageView
                 android:id="@+id/courseLogo"
                 android:layout_marginLeft="18dp"
-                android:layout_width="96dp"
+                android:layout_width="76dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/course_programming">
             </ImageView>

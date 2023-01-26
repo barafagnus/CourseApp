@@ -4,9 +4,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,8 +15,6 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -39,8 +35,8 @@ public class CourseActivity extends YouTubeBaseActivity implements RecyclerViewI
     private YouTubePlayerView youTubeView;
     private static List<CourseContent> courseContentList;
     private ArrayList<String> videoIdList;
-    YouTubePlayer youTubePlayer;
-    String currentVideoId = "YLUyVtHTGqw";
+    private YouTubePlayer youTubePlayer;
+    private String currentVideoId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +52,7 @@ public class CourseActivity extends YouTubeBaseActivity implements RecyclerViewI
 
         TextView courseName = findViewById(R.id.courseName);
         courseName.setText(getIntent().getStringExtra("courseName"));
-
+        currentVideoId = "YLUyVtHTGqw";
         videoIdList = new ArrayList<>();
         videoIdList = getIntent().getStringArrayListExtra("courseVideoId");
         courseContentList = new ArrayList<>();
@@ -67,34 +63,30 @@ public class CourseActivity extends YouTubeBaseActivity implements RecyclerViewI
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        // ---- !!! ---
-        for (int i = 0; i < videoIdList.size(); i++) {
-            YouTubeService youTubeService = retrofit.create(YouTubeService.class);
-            youTubeService.getVideosDetails(videoIdList.get(i), YouTubeApiConfig.YOUTUBE_API_KEY).enqueue(new Callback<VideoModel>() {
-                @Override
-                public void onResponse(Call<VideoModel> call, Response<VideoModel> response) {
-                    response.body().getItems().forEach(element -> {
-                        courseContentList.add(new CourseContent(
-                                element.getContentDetails().getDuration(),
-                                element.getStatistics().getViewCount(),
-                                element.getStatistics().getLikeCount(),
-                                element.getSnippet().getTitle()));
-                    });
-                    if (response.isSuccessful()) {
-                        System.out.println(courseContentList);
-                        courseListRecycler = findViewById(R.id.courseListRecycler);
-                        linearLayoutManagerCourseList = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
-                        setUniversalRecyclerViewAdapter(courseContentList);
-                    }
+        YouTubeService youTubeService = retrofit.create(YouTubeService.class);
+        youTubeService.getVideosDetails(videoIdList, YouTubeApiConfig.YOUTUBE_API_KEY).enqueue(new Callback<VideoModel>() {
+            @Override
+            public void onResponse(Call<VideoModel> call, Response<VideoModel> response) {
+                response.body().getItems().forEach(element -> {
+                    courseContentList.add(new CourseContent(
+                            element.getContentDetails().getDuration(),
+                            element.getStatistics().getViewCount(),
+                            element.getStatistics().getLikeCount(),
+                            element.getSnippet().getTitle()));
+                });
+                if (response.isSuccessful()) {
+                    courseListRecycler = findViewById(R.id.courseListRecycler);
+                    linearLayoutManagerCourseList = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+                    setUniversalRecyclerViewAdapter(courseContentList);
                 }
+            }
 
-                @Override
-                public void onFailure(Call<VideoModel> call, Throwable t) {
-                    Toast toast = Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG);
-                    toast.show();
-                }
-            });
-        }
+            @Override
+            public void onFailure(Call<VideoModel> call, Throwable t) {
+                Toast toast = Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG);
+                toast.show();
+            }
+        });
     }
 
     @Override

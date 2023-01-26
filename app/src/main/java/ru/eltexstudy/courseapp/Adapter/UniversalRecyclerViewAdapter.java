@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -83,23 +82,8 @@ public class UniversalRecyclerViewAdapter extends RecyclerView.Adapter<Universal
         }
     }
 
-
     public void setCustomViewType(String customViewType) {
         this.customViewType = customViewType;
-    }
-
-    public String getCustomViewType() {
-        return customViewType;
-    }
-
-    public List<CourseContent> getCourseContent() {
-        return courseContent;
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-
-        return super.getItemViewType(position);
     }
 
     class Holder extends RecyclerView.ViewHolder {
@@ -135,14 +119,11 @@ public class UniversalRecyclerViewAdapter extends RecyclerView.Adapter<Universal
                 courseDescription = itemView.findViewById(R.id.courseDescription);
             }
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (recyclerViewInterface != null) {
-                        int pos = getAdapterPosition();
-                        if (pos != RecyclerView.NO_POSITION) {
-                            recyclerViewInterface.onItemCourseClick(pos);
-                        }
+            itemView.setOnClickListener(view -> {
+                if (recyclerViewInterface != null) {
+                    int pos = getAdapterPosition();
+                    if (pos != RecyclerView.NO_POSITION) {
+                        recyclerViewInterface.onItemCourseClick(pos);
                     }
                 }
             });

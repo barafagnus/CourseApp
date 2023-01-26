@@ -9,7 +9,6 @@ public class ContentDetails {
 
     private String definition;
 
-    //private String contentRating;
 
     private String projection;
 
@@ -54,16 +53,6 @@ public class ContentDetails {
     {
         this.definition = definition;
     }
-
-//    public String getContentRating ()
-//    {
-//        return contentRating;
-//    }
-//
-//    public void setContentRating (String contentRating)
-//    {
-//        this.contentRating = contentRating;
-//    }
 
     public String getProjection ()
     {

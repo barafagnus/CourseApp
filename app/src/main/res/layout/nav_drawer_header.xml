@@ -18,6 +18,7 @@
             android:src="@drawable/user_avatar" />
 
         <TextView
+            android:id="@+id/drawerUserName"
             android:fontFamily="@font/montserrat_medium"
             android:layout_marginTop="12dp"
             android:layout_gravity="center"
@@ -29,6 +30,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/drawerUserMail1"
             android:fontFamily="@font/montserrat_medium"
             android:layout_gravity="center"
             android:layout_width="wrap_content"

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -21,13 +22,18 @@ public class PersonalAccountFragment extends Fragment implements RecyclerViewInt
     LinearLayoutManager linearLayoutManagerCourseList;
     UniversalRecyclerViewAdapter universalRecyclerViewAdapter;
     RecyclerView courseListRecycler;
-    LinkedList<Course> filteredCourseList;
+    private LinkedList<Course> filteredCourseList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_personal_account, container, false);
         courseListRecycler = view.findViewById(R.id.courseListRecycler);
+        TextView userName = view.findViewById(R.id.userName);
+        userName.setText(HomeFragment.getUserList().get(0).getName());
+        TextView userMail = view.findViewById(R.id.userMail);
+        userMail.setText(HomeFragment.getUserList().get(0).getMail());
+
         filteredCourseList = userListCourseFilter(0, HomeFragment.getUserList(), HomeFragment.getCourseData());
 
         linearLayoutManagerCourseList = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
